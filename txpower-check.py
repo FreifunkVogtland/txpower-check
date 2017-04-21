@@ -24,6 +24,24 @@ model_offsets = {
 	"Ubiquiti Bullet M5"          :  500, 
 }
 
+def get_name(nodes, node_id):
+	for n in nodes['nodes']:
+		if not 'nodeinfo' in n:
+			continue
+
+		if not 'node_id' in n['nodeinfo']:
+			continue
+
+		if node_id != n['nodeinfo']['node_id']:
+			continue
+
+		if not 'hostname' in n['nodeinfo']:
+			continue
+
+		return n['nodeinfo']['hostname']
+
+	return None
+
 # WARNING this is not actually 100% correct because it depends also on
 # configured channel width
 #
@@ -80,15 +98,20 @@ def get_limits(model, txpowers):
 
 	return limits
 
-def print_limits(node_limits):
+def print_limits(node_limits, nodes):
 	for node_id, data in node_limits.items():
-		print("http://vogtland.freifunk.net/map/#!v:m;n:%s" % node_id)
+		name = get_name(nodes, node_id)
+		if name:
+			print(" * %s" % name)
+
+		print("   - http://vogtland.freifunk.net/map/#!v:m;n:%s" % node_id)
 
 		for limit in data:
+
 			cur = limit['mbm']
 			freq = limit['frequency']
 			regdb = limit['regdb']
-			print(" * %u.%03u GHz: %3u.%02u dBm (limit %3u.%02u dBm)" % (
+			print("   - %u.%03u GHz: %3u.%02u dBm (limit %3u.%02u dBm)" % (
 			      int(freq / 1000), int(freq % 1000),
 			      int(cur / 100), int(cur % 100),
 			      int(regdb / 100), int(regdb % 100)))
@@ -131,7 +154,7 @@ def main():
 		if limits:
 			node_limits[node_id] = limits
 
-	print_limits(node_limits)
+	print_limits(node_limits, nodes)
 
 if __name__ == "__main__":
 	main()
