@@ -8,7 +8,7 @@ be compared again the allowed limits.
 
 txpower-check simplifies the search for misconfigured nodes:
 
-    curl https://vpn01.freifunk-vogtland.net/ffv/nodes.json -o nodes.json
+    curl https://mapdata.freifunk-vogtland.net/nodes.json -o nodes.json
     ./txpower-check.py nodes.json
 
 Both commands will be started automaticall when calling

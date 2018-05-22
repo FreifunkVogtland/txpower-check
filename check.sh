@@ -2,5 +2,5 @@
 
 set -e
 
-curl -s https://vpn01.freifunk-vogtland.net/ffv/nodes.json -o nodes.json
+curl -s https://mapdata.freifunk-vogtland.net/nodes.json -o nodes.json
 ./txpower-check.py nodes.json
