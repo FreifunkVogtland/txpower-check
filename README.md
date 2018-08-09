@@ -18,7 +18,7 @@ Both commands will be started automaticall when calling
 The output is a simple list of links to the map and followed by the offending
 transmission power settings
 
-    http://vogtland.freifunk.net/map/#!v:m;n:dc9fdb72567d
+    https://vogtland.freifunk.net/map/#!/map/dc9fdb72567d
      * 5.180 GHz:  36.00 dBm (limit  20.00 dBm)
-    http://vogtland.freifunk.net/map/#!v:m;n:f4f26dc1faa2
+    https://vogtland.freifunk.net/map/#!/map/f4f26dc1faa2
      * 2.462 GHz:  26.00 dBm (limit  20.00 dBm)

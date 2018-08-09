@@ -109,7 +109,7 @@ def print_limits(node_limits, nodes):
         if name:
             print(" * %s" % name)
 
-        print("   - http://vogtland.freifunk.net/map/#!v:m;n:%s" % node_id)
+        print("   - https://vogtland.freifunk.net/map/#!/map/%s" % node_id)
 
         for limit in data:
 
